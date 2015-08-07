@@ -1,0 +1,34 @@
+{
+  "name": "komento",
+  "version": "0.0.0",
+  "description": "Parses comments inside javascript functions and converts them to string.",
+  "main": "komento.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volkovasystems/komento.git"
+  },
+  "keywords": [
+    "comment-parser",
+    "comment",
+    "parser",
+    "komento"
+  ],
+  "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/volkovasystems/komento/issues"
+  },
+  "homepage": "https://github.com/volkovasystems/komento#readme",
+  "dependencies": {
+    "harden": "^0.2.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "mocha": "^2.2.5",
+    "pita": "^0.2.0",
+    "unit.js": "^2.0.0"
+  }
+}

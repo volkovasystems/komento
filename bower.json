@@ -1,0 +1,31 @@
+{
+  "name": "komento",
+  "main": "komento.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/volkovasystems/komento",
+  "authors": [
+    "Richeve S. Bebedor <richeve.bebedor@gmail.com>"
+  ],
+  "description": "Parses comments inside javascript functions and converts them to string.",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "comment-parser",
+    "comment",
+    "parser",
+    "komento"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "harden": "~0.2.0"
+  }
+}
