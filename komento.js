@@ -69,7 +69,7 @@ var komento = function komento( comment ){
 
 harden.bind( komento )
 	( "PARSER_PATTERN",
-		/^function\s*\w*\([^\(\)]*\)\s*\{\s*\/\*(.*|[^]*)\*\/\s*\}$/m );
+		/^function\s*\w*\([^\(\)]*\)\s*\{\s*\/\*\!?(.*|[^]*)\*\/\s*\}$/m );
 
 if( typeof module != "undefined" ){
 	module.exports = komento;
