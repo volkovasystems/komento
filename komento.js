@@ -58,7 +58,12 @@ if( typeof window != "undefined" &&
 
 var komento = function komento( comment ){
 	if( typeof comment == "function" ){
-		comment = comment.toString( ).match( komento.PARSER_PATTERN )[ 1 ];
+		comment = ( comment.toString( ).match( komento.PARSER_PATTERN ) || [ ] )[ 1 ] ||
+			( comment.toString( ).match( komento.PARSER_PATTERN_SINGLE_STRING ) || [ ] )[ 1 ];
+
+		if( !comment ){
+			console.log( "komento has not extracted anything" );
+		}
 
 		return comment;
 
@@ -69,7 +74,11 @@ var komento = function komento( comment ){
 
 harden.bind( komento )
 	( "PARSER_PATTERN",
-		/^function\s*\w*\([^\(\)]*\)\s*\{\s*\/\*\!?(.*|[^]*)\*\/\s*\}$/m );
+		/^function\s*\w*\([^\(\)]*\)\s*\{\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\s*\}$/m );
+
+harden.bind( komento )
+	( "PARSER_PATTERN_SINGLE_STRING",
+		/^function\s*\w*\([^\(\)]*\)\s*\{\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\s*\}$/ );
 
 if( typeof module != "undefined" ){
 	module.exports = komento;
