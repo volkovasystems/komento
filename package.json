@@ -1,6 +1,6 @@
 {
   "name": "komento",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Parses comments inside javascript functions and converts them to string.",
   "main": "komento.js",
   "scripts": {

@@ -74,11 +74,11 @@ var komento = function komento( comment ){
 
 harden.bind( komento )
 	( "PARSER_PATTERN",
-		/^function\s*\w*\([^\(\)]*\)\s*\{\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\s*\}$/m );
+		/^function\s*\w*\([^\(\)]*\)\s*\{\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/m );
 
 harden.bind( komento )
 	( "PARSER_PATTERN_SINGLE_STRING",
-		/^function\s*\w*\([^\(\)]*\)\s*\{\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\s*\}$/ );
+		/^function\s*\w*\([^\(\)]*\)\s*\{\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/ );
 
 if( typeof module != "undefined" ){
 	module.exports = komento;
