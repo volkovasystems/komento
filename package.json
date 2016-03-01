@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/volkovasystems/komento#readme",
   "dependencies": {
+    "handlebars": "^4.0.5",
     "harden": "^0.2.0"
   },
   "devDependencies": {

@@ -48,6 +48,8 @@
 */
 if( typeof window == "undefined" ){
 	var harden = require( "harden" );
+
+	var Handlebars = require( "handlebars" );
 }
 
 if( typeof window != "undefined" &&
@@ -56,13 +58,23 @@ if( typeof window != "undefined" &&
 	throw new Error( "harden is not defined" );
 }
 
-var komento = function komento( comment ){
+if( typeof window != "undefined" &&
+	!( "Handlebars" in window ) )
+{
+	throw new Error( "Handlebars is not defined" );
+}
+
+var komento = function komento( comment, options ){
 	if( typeof comment == "function" ){
 		comment = ( comment.toString( ).match( komento.PARSER_PATTERN ) || [ ] )[ 1 ] ||
 			( comment.toString( ).match( komento.PARSER_PATTERN_SINGLE_STRING ) || [ ] )[ 1 ];
 
 		if( !comment ){
 			console.log( "komento has not extracted anything" );
+		}
+
+		if( comment ){
+			comment = Handlebars.compile( comment )( options );
 		}
 
 		return comment;
