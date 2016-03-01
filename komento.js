@@ -73,7 +73,9 @@ var komento = function komento( comment, options ){
 			console.log( "komento has not extracted anything" );
 		}
 
-		if( comment ){
+		if( comment &&
+			typeof options == "object" )
+		{
 			comment = Handlebars.compile( comment )( options );
 		}
 
