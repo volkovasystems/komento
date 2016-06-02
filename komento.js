@@ -1,8 +1,12 @@
+"use strict";
+
 /*:
 	@module-license:
 		The MIT License (MIT)
+		@mit-license
 
-		Copyright (c) 2014 Richeve Siodina Bebedor
+		Copyright (@c) 2016 Richeve Siodina Bebedor
+		@email: richeve.bebedor@gmail.com
 
 		Permission is hereby granted, free of charge, to any person obtaining a copy
 		of this software and associated documentation files (the "Software"), to deal
@@ -25,14 +29,15 @@
 
 	@module-configuration:
 		{
-			"packageName": "komento",
-			"fileName": "komento.js",
-			"moduleName": "komento",
-			"authorName": "Richeve S. Bebedor",
-			"authorEMail": "richeve.bebedor@gmail.com",
-			"repository": "git@github.com:volkovasystems/komento.git",
-			"testCase": "komento-test.js",
-			"isGlobal": true
+			"package": "komento",
+			"path": "komento/komento.js",
+			"file": "komento.js",
+			"module": "komento",
+			"author": "Richeve S. Bebedor",
+			"eMail": "richeve.bebedor@gmail.com",
+			"repository": "https://github.com/volkovasystems/komento.git",
+			"test": "komento-test.js",
+			"global": true
 		}
 	@end-module-configuration
 
@@ -40,16 +45,16 @@
 
 	@end-module-documentation
 
-    @include:
+	@include:
 		{
-			"harden": "harden"
+			"harden": "harden",
+			"handlebar": "handlebars"
 		}
 	@end-include
 */
 if( typeof window == "undefined" ){
+	var handlebar = require( "handlebars" );
 	var harden = require( "harden" );
-
-	var Handlebars = require( "handlebars" );
 }
 
 if( typeof window != "undefined" &&
@@ -62,28 +67,41 @@ if( typeof window != "undefined" &&
 	!( "Handlebars" in window ) )
 {
 	throw new Error( "Handlebars is not defined" );
+
+}else if( typeof window != "undefined" &&
+	"Handlebars" in window )
+{
+	var handlebar = Handlebars;
 }
 
-var komento = function komento( comment, options ){
+var komento = function komento( comment, option ){
 	if( typeof comment == "function" ){
 		comment = ( comment.toString( ).match( komento.PARSER_PATTERN ) || [ ] )[ 1 ] ||
 			( comment.toString( ).match( komento.PARSER_PATTERN_SINGLE_STRING ) || [ ] )[ 1 ];
 
-		if( !comment ){
-			console.log( "komento has not extracted anything" );
+		if( !comment &&
+			!komento.silent )
+		{
+			console.log( "warning, comment extraction failed" );
 		}
 
 		if( comment &&
-			typeof options == "object" )
+			typeof option == "object" )
 		{
-			comment = Handlebars.compile( comment )( options );
+			comment = handlebar.compile( comment )( option );
 		}
 
 		return comment;
 
 	}else{
-		throw new Error( "invalid comment wrapper" );
+		throw new Error( "invalid comment" );
 	}
+};
+
+komento.silent = true;
+
+komento.setSilent = function setSilent( silent ){
+	komento.silent = silent;
 };
 
 harden.bind( komento )
@@ -96,12 +114,4 @@ harden.bind( komento )
 
 if( typeof module != "undefined" ){
 	module.exports = komento;
-}
-
-if( typeof global != "undefined" ){
-	harden
-		.bind( komento )( "globalize",
-			function globalize( ){
-				harden.bind( global )( "komento", komento );
-			} );
 }
