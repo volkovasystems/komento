@@ -27,6 +27,6 @@
   ],
   "dependencies": {
     "handlebars": "^4.0.5",
-    "harden": "^0.3.0"
+    "harden": "^0.3.1"
   }
 }
