@@ -1,7 +1,7 @@
 {
   "name": "komento",
   "main": "komento.js",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "homepage": "https://github.com/volkovasystems/komento",
   "authors": [
     "Richeve S. Bebedor <richeve.bebedor@gmail.com>"
