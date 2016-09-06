@@ -1,6 +1,6 @@
 "use strict";
 
-/*:
+/*;
 	@module-license:
 		The MIT License (MIT)
 		@mit-license
@@ -47,8 +47,8 @@
 
 	@include:
 		{
-			"harden": "harden",
-			"handlebar": "handlebars"
+			"handlebar": "handlebars",
+			"harden": "harden"
 		}
 	@end-include
 */
@@ -75,15 +75,18 @@ if( typeof window != "undefined" &&
 }
 
 var komento = function komento( comment, option ){
+	/*;
+		@meta-configuration:
+			{
+				"comment:required": "function",
+				"option": "object"
+			}
+		@end-meta-configuration
+	*/
+
 	if( typeof comment == "function" ){
 		comment = ( comment.toString( ).match( komento.PARSER_PATTERN ) || [ ] )[ 1 ] ||
 			( comment.toString( ).match( komento.PARSER_PATTERN_SINGLE_STRING ) || [ ] )[ 1 ];
-
-		if( !comment &&
-			!komento.silent )
-		{
-			console.log( "warning, comment extraction failed" );
-		}
 
 		if( comment &&
 			typeof option == "object" )
@@ -96,12 +99,6 @@ var komento = function komento( comment, option ){
 	}else{
 		throw new Error( "invalid comment" );
 	}
-};
-
-komento.silent = true;
-
-komento.setSilent = function setSilent( silent ){
-	komento.silent = silent;
 };
 
 harden.bind( komento )
