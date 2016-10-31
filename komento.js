@@ -42,19 +42,21 @@
 	@end-module-configuration
 
 	@module-documentation:
-
+		Parses comments inside javascript functions and converts them to string.
 	@end-module-documentation
 
 	@include:
 		{
 			"handlebar": "handlebars",
-			"harden": "harden"
+			"harden": "harden",
+			"truly": "truly"
 		}
 	@end-include
 */
 if( typeof window == "undefined" ){
 	var handlebar = require( "handlebars" );
 	var harden = require( "harden" );
+	var truly = require( "truly" );
 }
 
 if( typeof window != "undefined" &&
@@ -74,6 +76,12 @@ if( typeof window != "undefined" &&
 	var handlebar = Handlebars;
 }
 
+if( typeof window != "undefined" &&
+	!( "truly" in window ) )
+{
+	throw new Error( "truly is not defined" );
+}
+
 var komento = function komento( comment, option ){
 	/*;
 		@meta-configuration:
@@ -88,9 +96,7 @@ var komento = function komento( comment, option ){
 		comment = ( comment.toString( ).match( komento.PARSER_PATTERN ) || [ ] )[ 1 ] ||
 			( comment.toString( ).match( komento.PARSER_PATTERN_SINGLE_STRING ) || [ ] )[ 1 ];
 
-		if( comment &&
-			typeof option == "object" )
-		{
+		if( truly( comment ) && typeof option == "object" ){
 			comment = handlebar.compile( comment )( option );
 		}
 

@@ -1,7 +1,7 @@
 {
   "name": "komento",
+  "version": "0.2.6",
   "main": "komento.js",
-  "version": "0.2.5",
   "homepage": "https://github.com/volkovasystems/komento",
   "authors": [
     "Richeve S. Bebedor <richeve.bebedor@gmail.com>"
@@ -27,6 +27,7 @@
   ],
   "dependencies": {
     "handlebars": "^4.0.5",
-    "harden": "^0.3.5"
+    "harden": "^0.3.5",
+    "truly": "^0.0.1"
   }
 }
