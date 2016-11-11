@@ -49,36 +49,31 @@
 		{
 			"handlebar": "handlebars",
 			"harden": "harden",
+			"protype": "protype",
 			"truly": "truly"
 		}
 	@end-include
 */
-if( typeof window == "undefined" ){
+if( typeof require == "function" ){
 	var handlebar = require( "handlebars" );
 	var harden = require( "harden" );
+	var protype = require( "protype" );
 	var truly = require( "truly" );
 }
 
-if( typeof window != "undefined" &&
-	!( "harden" in window ) )
-{
+if( typeof window != "undefined" && !( "harden" in window ) ){
 	throw new Error( "harden is not defined" );
 }
 
-if( typeof window != "undefined" &&
-	!( "Handlebars" in window ) )
-{
-	throw new Error( "Handlebars is not defined" );
-
-}else if( typeof window != "undefined" &&
-	"Handlebars" in window )
-{
-	var handlebar = Handlebars;
+if( typeof window != "undefined" && !( "handlebars" in window ) ){
+	throw new Error( "handlebars is not defined" );
 }
 
-if( typeof window != "undefined" &&
-	!( "truly" in window ) )
-{
+if( typeof window != "undefined" && !( "protype" in window ) ){
+	throw new Error( "protype is not defined" );
+}
+
+if( typeof window != "undefined" && !( "truly" in window ) ){
 	throw new Error( "truly is not defined" );
 }
 
@@ -92,19 +87,18 @@ var komento = function komento( comment, option ){
 		@end-meta-configuration
 	*/
 
-	if( typeof comment == "function" ){
-		comment = ( comment.toString( ).match( komento.PARSER_PATTERN ) || [ ] )[ 1 ] ||
-			( comment.toString( ).match( komento.PARSER_PATTERN_SINGLE_STRING ) || [ ] )[ 1 ];
-
-		if( truly( comment ) && typeof option == "object" ){
-			comment = handlebar.compile( comment )( option );
-		}
-
-		return comment;
-
-	}else{
-		throw new Error( "invalid comment" );
+	if( !protype( comment, FUNCTION ) ){
+		throw new Error( "invalid function" );
 	}
+
+	comment = ( comment.toString( ).match( komento.PARSER_PATTERN ) || [ ] )[ 1 ] ||
+		( comment.toString( ).match( komento.PARSER_PATTERN_SINGLE_STRING ) || [ ] )[ 1 ];
+
+	if( truly( comment ) && protype( option, OBJECT ) ){
+		comment = handlebar.compile( comment )( option );
+	}
+
+	return comment;
 };
 
 harden.bind( komento )
@@ -115,6 +109,6 @@ harden.bind( komento )
 	( "PARSER_PATTERN_SINGLE_STRING",
 		/^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/ );
 
-if( typeof module != "undefined" ){
+if( typeof module != "undefined" && typeof module.exports != "undefined" ){
 	module.exports = komento;
 }

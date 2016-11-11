@@ -1,6 +1,6 @@
 {
   "name": "komento",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "Parses comments inside javascript functions and converts them to string.",
   "main": "komento.js",
   "scripts": {
@@ -11,7 +11,6 @@
     "url": "git+https://github.com/volkovasystems/komento.git"
   },
   "keywords": [
-    "comment-parser",
     "comment",
     "parser",
     "komento"
@@ -24,7 +23,8 @@
   "homepage": "https://github.com/volkovasystems/komento#readme",
   "dependencies": {
     "handlebars": "^4.0.5",
-    "harden": "^0.3.5",
-    "truly": "0.0.1"
+    "harden": "^0.6.0",
+    "protype": "^0.2.0",
+    "truly": "^0.2.0"
   }
 }
