@@ -50,6 +50,7 @@
 			"handlebar": "handlebars",
 			"harden": "harden",
 			"protype": "protype",
+			"realign": "realign",
 			"truly": "truly"
 		}
 	@end-include
@@ -58,6 +59,7 @@ if( typeof require == "function" ){
 	var handlebar = require( "handlebars" );
 	var harden = require( "harden" );
 	var protype = require( "protype" );
+	var realign = require( "realign" );
 	var truly = require( "truly" );
 }
 
@@ -71,6 +73,10 @@ if( typeof window != "undefined" && !( "handlebars" in window ) ){
 
 if( typeof window != "undefined" && !( "protype" in window ) ){
 	throw new Error( "protype is not defined" );
+}
+
+if( typeof window != "undefined" && !( "realign" in window ) ){
+	throw new Error( "realign is not defined" );
 }
 
 if( typeof window != "undefined" && !( "truly" in window ) ){
@@ -91,8 +97,10 @@ var komento = function komento( comment, option ){
 		throw new Error( "invalid function" );
 	}
 
-	comment = ( comment.toString( ).match( komento.PARSER_PATTERN ) || [ ] )[ 1 ] ||
-		( comment.toString( ).match( komento.PARSER_PATTERN_SINGLE_STRING ) || [ ] )[ 1 ];
+	comment = ( comment.toString( ).match( komento.MULTIPLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ] ||
+		( comment.toString( ).match( komento.SINGLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ];
+
+	comment = realign( comment );
 
 	if( truly( comment ) && protype( option, OBJECT ) ){
 		comment = handlebar.compile( comment )( option );
@@ -102,11 +110,11 @@ var komento = function komento( comment, option ){
 };
 
 harden.bind( komento )
-	( "PARSER_PATTERN",
+	( "MULTIPLE_LINE_COMMENT_PATTERN",
 		/^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/m );
 
 harden.bind( komento )
-	( "PARSER_PATTERN_SINGLE_STRING",
+	( "SINGLE_LINE_COMMENT_PATTERN",
 		/^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/ );
 
 if( typeof module != "undefined" && typeof module.exports != "undefined" ){

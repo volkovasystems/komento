@@ -25,6 +25,7 @@
     "handlebars": "^4.0.5",
     "harden": "^0.6.0",
     "protype": "^0.2.0",
+    "realign": "^0.1.0",
     "truly": "^0.2.0"
   }
 }
