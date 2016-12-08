@@ -51,39 +51,20 @@
 			"harden": "harden",
 			"protype": "protype",
 			"realign": "realign",
+			"stuffed": "stuffed",
 			"truly": "truly"
 		}
 	@end-include
 */
-if( typeof require == "function" ){
-	var handlebar = require( "handlebars" );
-	var harden = require( "harden" );
-	var protype = require( "protype" );
-	var realign = require( "realign" );
-	var truly = require( "truly" );
-}
 
-if( typeof window != "undefined" && !( "harden" in window ) ){
-	throw new Error( "harden is not defined" );
-}
+const handlebar = require( "handlebars" );
+const harden = require( "harden" );
+const protype = require( "protype" );
+const realign = require( "realign" );
+const stuffed = require( "stuffed" );
+const truly = require( "truly" );
 
-if( typeof window != "undefined" && !( "handlebars" in window ) ){
-	throw new Error( "handlebars is not defined" );
-}
-
-if( typeof window != "undefined" && !( "protype" in window ) ){
-	throw new Error( "protype is not defined" );
-}
-
-if( typeof window != "undefined" && !( "realign" in window ) ){
-	throw new Error( "realign is not defined" );
-}
-
-if( typeof window != "undefined" && !( "truly" in window ) ){
-	throw new Error( "truly is not defined" );
-}
-
-var komento = function komento( comment, option ){
+const komento = function komento( comment, option ){
 	/*;
 		@meta-configuration:
 			{
@@ -102,21 +83,17 @@ var komento = function komento( comment, option ){
 
 	comment = realign( comment );
 
-	if( truly( comment ) && protype( option, OBJECT ) ){
+	if( truly( comment ) && protype( option, OBJECT ) && stuffed( object ) ){
 		comment = handlebar.compile( comment )( option );
 	}
 
 	return comment;
 };
 
-harden.bind( komento )
-	( "MULTIPLE_LINE_COMMENT_PATTERN",
-		/^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/m );
-
-harden.bind( komento )
-	( "SINGLE_LINE_COMMENT_PATTERN",
+harden
+	.bind( komento )( "MULTIPLE_LINE_COMMENT_PATTERN",
+		/^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/m )
+	.harden( "SINGLE_LINE_COMMENT_PATTERN",
 		/^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/ );
 
-if( typeof module != "undefined" && typeof module.exports != "undefined" ){
-	module.exports = komento;
-}
+module.exports = komento;
