@@ -83,7 +83,7 @@ const komento = function komento( comment, option ){
 
 	comment = realign( comment );
 
-	if( truly( comment ) && protype( option, OBJECT ) && stuffed( object ) ){
+	if( truly( comment ) && protype( option, OBJECT ) && stuffed( option ) ){
 		comment = handlebar.compile( comment )( option );
 	}
 
