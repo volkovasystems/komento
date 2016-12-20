@@ -1,10 +1,11 @@
 {
   "name": "komento",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Parses comments inside javascript functions and converts them to string.",
   "main": "komento.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel komento.js -o komento.support.js && webpack",
+    "test": "mocha komento-test.js"
   },
   "repository": {
     "type": "git",
@@ -16,6 +17,9 @@
     "komento"
   ],
   "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+  "contributors": [
+    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/volkovasystems/komento/issues"
@@ -23,7 +27,7 @@
   "homepage": "https://github.com/volkovasystems/komento#readme",
   "dependencies": {
     "handlebars": "^4.0.6",
-    "harden": "^0.9.0",
+    "harden": "^0.10.0",
     "protype": "^0.4.0",
     "realign": "^0.2.0",
     "stuffed": "^0.1.0",

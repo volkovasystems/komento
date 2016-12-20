@@ -34,6 +34,9 @@
 			"file": "komento.js",
 			"module": "komento",
 			"author": "Richeve S. Bebedor",
+			"contributors": [
+				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+			],
 			"eMail": "richeve.bebedor@gmail.com",
 			"repository": "https://github.com/volkovasystems/komento.git",
 			"test": "komento-test.js",
@@ -97,3 +100,5 @@ harden
 		/^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/ );
 
 module.exports = komento;
+
+console.log( komento( function hello(){ } ) );
