@@ -3,6 +3,8 @@
   "version": "0.6.0",
   "description": "Parses comments inside javascript functions and converts them to string.",
   "main": "komento.js",
+  "support": "komento.support.js",
+  "deploy": "komento.deploy.js",
   "scripts": {
     "build": "babel komento.js -o komento.support.js && webpack",
     "test": "mocha komento-test.js"
