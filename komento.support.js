@@ -60,43 +60,38 @@
 	@end-include
 */
 
-const handlebar = require( "handlebars" );
-const harden = require( "harden" );
-const protype = require( "protype" );
-const realign = require( "realign" );
-const stuffed = require( "stuffed" );
-const truly = require( "truly" );
+var handlebar = require("handlebars");
+var harden = require("harden");
+var protype = require("protype");
+var realign = require("realign");
+var stuffed = require("stuffed");
+var truly = require("truly");
 
-const komento = function komento( comment, option ){
+var komento = function komento(comment, option) {
 	/*;
-		@meta-configuration:
-			{
-				"comment:required": "function",
-				"option": "object"
-			}
-		@end-meta-configuration
-	*/
+ 	@meta-configuration:
+ 		{
+ 			"comment:required": "function",
+ 			"option": "object"
+ 		}
+ 	@end-meta-configuration
+ */
 
-	if( !protype( comment, FUNCTION ) ){
-		throw new Error( "invalid function" );
+	if (!protype(comment, FUNCTION)) {
+		throw new Error("invalid function");
 	}
 
-	comment = ( comment.toString( ).match( komento.MULTIPLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ] ||
-		( comment.toString( ).match( komento.SINGLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ];
+	comment = (comment.toString().match(komento.MULTIPLE_LINE_COMMENT_PATTERN) || [])[1] || (comment.toString().match(komento.SINGLE_LINE_COMMENT_PATTERN) || [])[1];
 
-	comment = realign( comment );
+	comment = realign(comment);
 
-	if( truly( comment ) && protype( option, OBJECT ) && stuffed( option ) ){
-		comment = handlebar.compile( comment )( option );
+	if (truly(comment) && protype(option, OBJECT) && stuffed(option)) {
+		comment = handlebar.compile(comment)(option);
 	}
 
 	return comment;
 };
 
-harden
-	.bind( komento )( "MULTIPLE_LINE_COMMENT_PATTERN",
-		/^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/m )
-	.harden( "SINGLE_LINE_COMMENT_PATTERN",
-		/^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/ );
+harden.bind(komento)("MULTIPLE_LINE_COMMENT_PATTERN", /^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/m).harden("SINGLE_LINE_COMMENT_PATTERN", /^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/);
 
 module.exports = komento;

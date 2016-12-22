@@ -29,10 +29,10 @@
   ],
   "dependencies": {
     "handlebars": "^4.0.5",
-    "harden": "^0.10.0",
-    "protype": "^0.4.0",
-    "realign": "^0.2.0",
-    "stuffed": "^0.1.0",
-    "truly": "^0.3.0"
+    "harden": "^0.12.0",
+    "protype": "^0.7.0",
+    "realign": "^0.3.0",
+    "stuffed": "^0.2.0",
+    "truly": "^0.5.0"
   }
 }
