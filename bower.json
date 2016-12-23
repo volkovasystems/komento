@@ -1,6 +1,6 @@
 {
   "name": "komento",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "main": "komento.js",
   "support": "komento.support.js",
   "deploy": "komento.deploy.js",

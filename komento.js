@@ -81,13 +81,23 @@ const komento = function komento( comment, option ){
 		throw new Error( "invalid function" );
 	}
 
-	comment = ( comment.toString( ).match( komento.MULTIPLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ] ||
+	let string = ( comment.toString( ).match( komento.MULTIPLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ] ||
 		( comment.toString( ).match( komento.SINGLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ];
 
-	comment = realign( comment );
+	/*;
+		@note:
+			If there are no string from the comment,
+				we can safe to assume that it should return a string.
+		@end-note
+	*/
+	if( !string ){
+		string = comment( );
+	}
 
-	if( truly( comment ) && protype( option, OBJECT ) && stuffed( option ) ){
-		comment = handlebar.compile( comment )( option );
+	string = realign( string );
+
+	if( truly( string ) && protype( option, OBJECT ) && stuffed( option ) ){
+		string = handlebar.compile( string )( option );
 	}
 
 	return comment;
