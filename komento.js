@@ -100,7 +100,7 @@ const komento = function komento( comment, option ){
 		string = handlebar.compile( string )( option );
 	}
 
-	return comment;
+	return string;
 };
 
 harden

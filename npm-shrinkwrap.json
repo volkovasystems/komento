@@ -1,6 +1,6 @@
 {
   "name": "komento",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "dependencies": {
     "align-text": {
       "version": "0.1.4",

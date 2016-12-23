@@ -1,6 +1,6 @@
 {
   "name": "komento",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Parses comments inside javascript functions and converts them to string.",
   "main": "komento.js",
   "support": "komento.support.js",
@@ -41,6 +41,7 @@
     "babel-core": "^6.21.0",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-latest": "^6.16.0",
+    "source-map-loader": "^0.1.5",
     "webpack": "^1.14.0"
   }
 }
