@@ -1,6 +1,6 @@
 {
   "name": "komento",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Parses comments inside javascript functions and converts them to string.",
   "main": "komento.js",
   "support": "komento.support.js",
@@ -28,20 +28,20 @@
   },
   "homepage": "https://github.com/volkovasystems/komento#readme",
   "dependencies": {
-    "babel-runtime": "^6.20.0",
+    "babel-runtime": "^6.22.0",
     "handlebars": "^4.0.6",
-    "harden": "^0.12.0",
-    "protype": "^0.7.0",
-    "realign": "^0.3.0",
-    "stuffed": "^0.2.0",
-    "truly": "^0.5.0"
+    "harden": "^0.14.0",
+    "protype": "^0.11.0",
+    "realign": "^0.4.0",
+    "stuffed": "^0.4.0",
+    "truly": "^0.9.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-core": "^6.21.0",
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-preset-latest": "^6.16.0",
-    "source-map-loader": "^0.1.5",
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-latest": "^6.22.0",
+    "source-map-loader": "^0.1.6",
     "webpack": "^1.14.0"
   }
 }
