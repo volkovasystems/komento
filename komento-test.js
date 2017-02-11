@@ -3,4 +3,6 @@
 const komento = require( "./komento.js" );
 
 let expression = function Merchant( ) { };
-result = komento( function procedure( ){ } );
+let result = komento( function procedure( ){ } );
+
+console.log( result );
