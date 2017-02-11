@@ -1,13 +1,30 @@
-var webpack = require( "webpack" );
+"use strict";
+
+const webpack = require( "webpack" );
+const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 module.exports = {
 	"entry": "./komento.support.js",
 	"resolve": {
-		"modulesDirectories": [ "bower_components", "node_modules" ]
+		"descriptionFiles": [
+			"bower.json",
+			"package.json"
+		],
+		"modules": [
+			"bower_components",
+			"node_modules"
+		],
+		"mainFields": [
+			"support",
+			"browser",
+			"module",
+			"main"
+		]
 	},
 	"module": {
-		"preLoaders": [
+		"rules": [
 			{
+				"enforce": "pre",
 				"test": /\.support\.js$/,
 				"loader": "source-map-loader"
 			}
@@ -19,9 +36,16 @@ module.exports = {
 		"filename": "komento.deploy.js"
 	},
 	"plugins": [
-		new webpack.ResolverPlugin( new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin( "bower.json", [ "support" ] ) ),
-		new webpack.ResolverPlugin( new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin( ".bower.json", [ "main" ] ) ),
-		new webpack.optimize.UglifyJsPlugin( { "compress": { "warnings": false }, "comments": false, "sourceMap": true } )
+		new UglifyJsPlugin( {
+			"compress": {
+				"keep_fargs": true,
+				"keep_fnames": true,
+				"warnings": false
+			},
+			"comments": false,
+			"sourceMap": true,
+			"mangle": false
+		} )
 	],
-	"devtool": "#inline-source-map"
+	"devtool": "#cheap-module-inline-source-map"
 };
