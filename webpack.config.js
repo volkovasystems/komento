@@ -7,6 +7,7 @@ module.exports = {
 	"entry": "./komento.support.js",
 	"resolve": {
 		"descriptionFiles": [
+			".bower.json",
 			"bower.json",
 			"package.json"
 		],
@@ -19,17 +20,20 @@ module.exports = {
 			"browser",
 			"module",
 			"main"
-		]
+		],
+		"alias": {
+			"handlebars": "handlebars/dist/handlebars.js",
+		}
 	},
-	"module": {
-		"rules": [
-			{
-				"enforce": "pre",
-				"test": /\.support\.js$/,
-				"loader": "source-map-loader"
-			}
-		]
-	},
+	// "module": {
+	// 	"rules": [
+	// 		{
+	// 			"enforce": "pre",
+	// 			"test": /\.support\.js$/,
+	// 			"loader": "source-map-loader"
+	// 		}
+	// 	]
+	// },
 	"output": {
 		"library": "komento",
 		"libraryTarget": "umd",
