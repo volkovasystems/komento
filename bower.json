@@ -1,6 +1,6 @@
 {
   "name": "komento",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "main": "komento.deploy.js",
   "support": "komento.support.js",
   "homepage": "https://github.com/volkovasystems/komento",
@@ -28,10 +28,10 @@
   ],
   "dependencies": {
     "handlebars": "^4.0.5",
-    "harden": "^0.15.0",
-    "protype": "^0.16.0",
-    "realign": "^0.6.0",
-    "stuffed": "^0.10.0",
-    "truly": "^0.12.0"
+    "harden": "^0.16.0",
+    "protype": "^0.17.0",
+    "realign": "^0.7.0",
+    "stuffed": "^0.11.0",
+    "truly": "^0.13.0"
   }
 }
