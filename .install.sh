@@ -22,4 +22,5 @@ protype \
 realign \
 stuffed \
 truly \
---save
+--save \
+--force-latest
