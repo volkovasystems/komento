@@ -7,6 +7,7 @@ module.exports = {
 	"entry": "./komento.support.js",
 	"resolve": {
 		"descriptionFiles": [
+			".bower.json",
 			"bower.json",
 			"package.json"
 		],
