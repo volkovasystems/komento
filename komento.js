@@ -46,67 +46,76 @@
 
 	@module-documentation:
 		Parses comments inside javascript functions and converts them to string.
+
+		Support strings and functions returning strings.
 	@end-module-documentation
 
 	@include:
 		{
+			"depher": "depher",
+			"falzy": "falzy",
 			"handlebar": "handlebars",
-			"harden": "harden",
 			"protype": "protype",
 			"realign": "realign",
 			"stuffed": "stuffed",
-			"truly": "truly"
+			"truly": "truly",
+			"wichevr": "wichevr"
 		}
 	@end-include
 */
 
+const depher = require( "depher" );
+const falzy = require( "falzy" );
 const handlebar = require( "handlebars" );
-const harden = require( "harden" );
 const protype = require( "protype" );
 const realign = require( "realign" );
 const stuffed = require( "stuffed" );
 const truly = require( "truly" );
+const wichevr = require( "wichevr" );
+
+const MULTIPLE_LINE_COMMENT_PATTERN = /^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/m;
+const SINGLE_LINE_COMMENT_PATTERN = /^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/;
 
 const komento = function komento( comment, option ){
 	/*;
 		@meta-configuration:
 			{
-				"comment:required": "function",
+				"comment:required": [
+					"function",
+					"string"
+				],
 				"option": "object"
 			}
 		@end-meta-configuration
 	*/
 
-	if( !protype( comment, FUNCTION ) ){
-		throw new Error( "invalid function" );
+	if( falzy( comment ) || !protype( comment, FUNCTION + STRING ) ){
+		throw new Error( "invalid comment" );
 	}
 
-	let string = ( comment.toString( ).match( komento.MULTIPLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ] ||
-		( comment.toString( ).match( komento.SINGLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ];
+	let string = "";
+	if( protype( comment, STRING ) ){
+		string = comment;
 
-	/*;
-		@note:
-			If there are no string from the comment,
-				we can safe to assume that it should return a string.
-		@end-note
-	*/
-	if( !string ){
-		string = comment( );
+	}else if( protype( comment, FUNCTION ) && falzy( comment( ) ) ){
+		string = ( comment.toString( ).match( MULTIPLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ] ||
+			( comment.toString( ).match( SINGLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ];
+
+	}else if( protype( comment, FUNCTION ) ){
+		string = wichevr( comment( ), string );
 	}
+
+	string = string || "";
 
 	string = realign( string );
 
-	if( truly( string ) && protype( option, OBJECT ) && stuffed( option ) ){
+	option = depher( arguments, OBJECT, { } );
+
+	if( truly( string ) && stuffed( option ) ){
 		string = handlebar.compile( string )( option );
 	}
 
 	return string;
 };
-
-harden
-	.bind( komento )( "MULTIPLE_LINE_COMMENT_PATTERN",
-		/^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/m )
-	.harden( "SINGLE_LINE_COMMENT_PATTERN",
-		/^function\s*\w*\([^\(\)]*\)\s*\{\s*[\s\S]*\s*\/\*\!?([\s\S]*|.*|[^]*)\*\/\S*\s*\}$/ );
 
 module.exports = komento;

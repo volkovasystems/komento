@@ -1,11 +1,13 @@
 yarn add \
 babel-runtime \
+depher \
+falzy \
 handlebars \
-harden \
 protype \
 realign \
 stuffed \
 truly \
+wichevr \
 --save && \
 yarn add \
 babel-cli \
@@ -16,11 +18,13 @@ source-map-loader \
 webpack \
 --dev && \
 bower install \
+depher \
+falzy \
 handlebars \
-harden \
 protype \
 realign \
 stuffed \
 truly \
+wichevr \
 --save \
 --force-latest

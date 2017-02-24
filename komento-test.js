@@ -1,8 +1,16 @@
-"use strict";
 
 const komento = require( "./komento.js" );
 
-let expression = function Merchant( ) { };
-let result = komento( function procedure( ){ } );
+console.log( komento( function procedure( ){
+	return "hello world";
+} ) );
 
-console.log( result );
+console.log( komento( function procedure( ){
+	/*!
+		hello world yeah
+	*/
+} ) );
+
+console.log( komento( "hello {{ world }}", { "world": "yeah" } ) );
+
+console.log( komento( function( ){ } ) );
