@@ -5,6 +5,7 @@ falzy \
 handlebars \
 protype \
 realign \
+stringe \
 stuffed \
 truly \
 wichevr \
@@ -23,6 +24,7 @@ falzy \
 handlebars \
 protype \
 realign \
+stringe \
 stuffed \
 truly \
 wichevr \
