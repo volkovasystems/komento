@@ -69,6 +69,7 @@ var falzy = require("falzy");
 var handlebar = require("handlebars");
 var protype = require("protype");
 var realign = require("realign");
+var stringe = require("stringe");
 var stuffed = require("stuffed");
 var truly = require("truly");
 var wichevr = require("wichevr");
@@ -98,8 +99,8 @@ var komento = function komento(comment, option) {
 		string = comment;
 
 	} else if (protype(comment, FUNCTION) && falzy(comment())) {
-		string = (comment.toString().match(MULTIPLE_LINE_COMMENT_PATTERN) || [])[1] ||
-		(comment.toString().match(SINGLE_LINE_COMMENT_PATTERN) || [])[1];
+		string = (stringe(comment).match(MULTIPLE_LINE_COMMENT_PATTERN) || [])[1] ||
+		(stringe(comment).match(SINGLE_LINE_COMMENT_PATTERN) || [])[1];
 
 	} else if (protype(comment, FUNCTION)) {
 		string = wichevr(comment(), string);
