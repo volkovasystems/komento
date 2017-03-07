@@ -69,6 +69,7 @@ const falzy = require( "falzy" );
 const handlebar = require( "handlebars" );
 const protype = require( "protype" );
 const realign = require( "realign" );
+const stringe = require( "stringe" );
 const stuffed = require( "stuffed" );
 const truly = require( "truly" );
 const wichevr = require( "wichevr" );
@@ -98,8 +99,8 @@ const komento = function komento( comment, option ){
 		string = comment;
 
 	}else if( protype( comment, FUNCTION ) && falzy( comment( ) ) ){
-		string = ( comment.toString( ).match( MULTIPLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ] ||
-			( comment.toString( ).match( SINGLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ];
+		string = ( stringe( comment ).match( MULTIPLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ] ||
+			( stringe( comment ).match( SINGLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ];
 
 	}else if( protype( comment, FUNCTION ) ){
 		string = wichevr( comment( ), string );
