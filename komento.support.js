@@ -57,6 +57,7 @@
               			"handlebar": "handlebars",
               			"protype": "protype",
               			"realign": "realign",
+              			"stringe": "stringe",
               			"stuffed": "stuffed",
               			"truly": "truly",
               			"wichevr": "wichevr"
