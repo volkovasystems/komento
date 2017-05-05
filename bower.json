@@ -1,6 +1,6 @@
 {
   "name": "komento",
-  "version": "0.26.0",
+  "version": "0.27.0",
   "main": "komento.deploy.js",
   "support": "komento.support.js",
   "homepage": "https://github.com/volkovasystems/komento",
@@ -27,7 +27,7 @@
     "tests"
   ],
   "dependencies": {
-    "depher": "^0.30.0",
+    "depher": "^0.31.0",
     "falzy": "^0.19.0",
     "handlebars": "^4.0.8",
     "protype": "^0.21.0",
