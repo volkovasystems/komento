@@ -1,6 +1,6 @@
 {
   "name": "komento",
-  "version": "0.30.0",
+  "version": "0.31.0",
   "description": "Parses comments inside javascript functions and converts them to string.",
   "main": "komento.js",
   "support": "komento.support.js",
@@ -21,7 +21,8 @@
   ],
   "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
   "contributors": [
-    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+    "Vinse Vinalon <vinsevinalon@gmail.com>"
   ],
   "license": "MIT",
   "bugs": {
@@ -30,7 +31,7 @@
   "homepage": "https://github.com/volkovasystems/komento#readme",
   "dependencies": {
     "babel-runtime": "^6.23.0",
-    "depher": "^0.34.0",
+    "depher": "^0.35.0",
     "falzy": "^0.20.0",
     "handlebars": "^4.0.10",
     "protype": "^0.22.0",
