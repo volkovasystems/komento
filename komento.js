@@ -97,14 +97,14 @@ const komento = function komento( comment, option ){
 	}
 
 	let string = "";
-	if( protype( comment, STRING ) ){
+	if( typeof comment == STRING ){
 		string = comment;
 
-	}else if( protype( comment, FUNCTION ) && falzy( comment( ) ) ){
+	}else if( typeof comment == FUNCTION && falzy( comment( ) ) ){
 		string = ( stringe( comment ).match( MULTIPLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ] ||
 			( stringe( comment ).match( SINGLE_LINE_COMMENT_PATTERN ) || [ ] )[ 1 ];
 
-	}else if( protype( comment, FUNCTION ) ){
+	}else if( typeof comment == FUNCTION ){
 		string = wichevr( comment( ), string );
 	}
 
