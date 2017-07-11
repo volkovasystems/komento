@@ -2,12 +2,12 @@
 
 const webpack = require( "webpack" );
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+const ModuleConcatenationPlugin = webpack.optimize.ModuleConcatenationPlugin;
 
 module.exports = {
 	"entry": "./komento.support.js",
 	"resolve": {
 		"descriptionFiles": [
-			".bower.json",
 			"bower.json",
 			"package.json"
 		],
@@ -46,7 +46,8 @@ module.exports = {
 			"comments": false,
 			"sourceMap": true,
 			"mangle": false
-		} )
+		} ),
+		new ModuleConcatenationPlugin( )
 	],
 	"devtool": "#source-map"
 };

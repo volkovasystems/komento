@@ -64,7 +64,7 @@
               			"wichevr": "wichevr"
               		}
               	@end-include
-              */
+              */var _typeof2 = require("babel-runtime/helpers/typeof");var _typeof3 = _interopRequireDefault(_typeof2);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 var depher = require("depher");
 var falzy = require("falzy");
@@ -97,14 +97,14 @@ var komento = function komento(comment, option) {
 	}
 
 	var string = "";
-	if (protype(comment, STRING)) {
+	if ((typeof comment === "undefined" ? "undefined" : (0, _typeof3.default)(comment)) == STRING) {
 		string = comment;
 
-	} else if (protype(comment, FUNCTION) && falzy(comment())) {
+	} else if ((typeof comment === "undefined" ? "undefined" : (0, _typeof3.default)(comment)) == FUNCTION && falzy(comment())) {
 		string = (stringe(comment).match(MULTIPLE_LINE_COMMENT_PATTERN) || [])[1] ||
 		(stringe(comment).match(SINGLE_LINE_COMMENT_PATTERN) || [])[1];
 
-	} else if (protype(comment, FUNCTION)) {
+	} else if ((typeof comment === "undefined" ? "undefined" : (0, _typeof3.default)(comment)) == FUNCTION) {
 		string = wichevr(comment(), string);
 	}
 
